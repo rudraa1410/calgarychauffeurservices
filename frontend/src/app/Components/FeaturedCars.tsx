@@ -53,7 +53,10 @@ const FeaturedCars: React.FC = () => {
               className="car-card bg-white rounded-lg shadow-md overflow-hidden"
             >
               <img
-                src={car.img || "https://via.placeholder.com/300x200"} // If no image, use a placeholder
+                src={
+                  car.img ||
+                  "https://www.a1limoservice.ca/wp-content/uploads/2019/05/A-1-Limousine-Sedan-Service-Calgary-White-Stretch-Limo-for-Weddings-and-Grads.jpg"
+                } // If no image, use a placeholder
                 alt={car.name}
                 className="w-full h-48 object-cover"
               />

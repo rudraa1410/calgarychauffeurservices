@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import CarCard from "./CarCard"; // Import the CarCard component
 
 const FeaturedCars: React.FC = () => {
-  const [cars, setCars] = useState([]);
+  const [cars, setCars] = useState<any[]>([]); // Add a type for cars state
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -47,34 +48,14 @@ const FeaturedCars: React.FC = () => {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {cars.map((car: any, index: number) => (
-            <div
-              key={index}
-              className="car-card bg-white rounded-lg shadow-md overflow-hidden"
-            >
-              <img
-                src={
-                  car.img ||
-                  "https://www.a1limoservice.ca/wp-content/uploads/2019/05/A-1-Limousine-Sedan-Service-Calgary-White-Stretch-Limo-for-Weddings-and-Grads.jpg"
-                } // If no image, use a placeholder
-                alt={car.name}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {car.name}
-                </h3>
-                <p className="mt-2 text-gray-500">{car.type}</p>
-                <div className="mt-4 flex justify-between items-center">
-                  <span className="text-2xl font-bold text-blue-600">
-                    {car.price}
-                  </span>
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700">
-                    View Details
-                  </button>
-                </div>
-              </div>
-            </div>
+          {cars.map((car, index) => (
+            <CarCard
+              key={index} // Add a key for list rendering
+              name={car.name}
+              type={car.type}
+              price={car.price}
+              img={car.img}
+            />
           ))}
         </div>
       </div>

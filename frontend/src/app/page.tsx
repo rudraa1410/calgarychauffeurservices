@@ -1,5 +1,5 @@
 import "bootstrap-icons/font/bootstrap-icons.css";
-import HomePage from "@/HomePage/HomePage";
+import HomePage from "@/pages/HomePage";
 
 const App: React.FC = () => {
   return (

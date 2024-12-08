@@ -1,26 +1,38 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 
 const FeaturedCars: React.FC = () => {
-  const cars = [
-    {
-      name: "Mercedes-Benz S-Class",
-      type: "Luxury Sedan",
-      price: "$200/day",
-      img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
-    },
-    {
-      name: "Porsche 911",
-      type: "Sports Car",
-      price: "$350/day",
-      img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
-    },
-    {
-      name: "Range Rover Sport",
-      type: "Luxury SUV",
-      price: "$280/day",
-      img: "https://images.unsplash.com/photo-1519245886-ce8910294539?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80",
-    },
-  ];
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Fetch cars data from the API
+    const fetchCars = async () => {
+      try {
+        const response = await fetch("/api/cars");
+        if (!response.ok) {
+          throw new Error("Failed to fetch cars");
+        }
+        const data = await response.json();
+        setCars(data);
+      } catch (error: any) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCars();
+  }, []);
+
+  if (loading) {
+    return <p>Loading cars...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div className="bg-gray-50 py-12">
@@ -35,13 +47,13 @@ const FeaturedCars: React.FC = () => {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {cars.map((car, index) => (
+          {cars.map((car: any, index: number) => (
             <div
               key={index}
               className="car-card bg-white rounded-lg shadow-md overflow-hidden"
             >
               <img
-                src={car.img}
+                src={car.img || "https://via.placeholder.com/300x200"} // If no image, use a placeholder
                 alt={car.name}
                 className="w-full h-48 object-cover"
               />

@@ -12,10 +12,7 @@ const CarCard: React.FC<CarCardProps> = ({ name, type, price, img }) => {
   return (
     <div className="car-card bg-white rounded-lg shadow-md overflow-hidden">
       <img
-        src={
-          img ||
-          "https://www.a1limoservice.ca/wp-content/uploads/2019/05/A-1-Limousine-Sedan-Service-Calgary-White-Stretch-Limo-for-Weddings-and-Grads.jpg"
-        } // Placeholder if no image
+        src={img || "https://via.placeholder.com/300x200"}
         alt={name}
         className="w-full h-48 object-cover"
       />

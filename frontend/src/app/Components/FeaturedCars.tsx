@@ -48,7 +48,7 @@ const FeaturedCars: React.FC = () => {
         </div>
 
         <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {cars.map((car, index) => (
+          {cars.slice(0, 3).map((car, index) => (
             <CarCard
               key={index} // Add a key for list rendering
               name={car.name}

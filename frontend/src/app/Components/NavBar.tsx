@@ -21,7 +21,7 @@ const NavBar: React.FC = () => {
             <a href="#" className="text-gray-700 hover:text-blue-600">
               About
             </a>
-            <a href="#" className="text-gray-700 hover:text-blue-600">
+            <a href="/ContactUs" className="text-gray-700 hover:text-blue-600">
               Contact
             </a>
             <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">

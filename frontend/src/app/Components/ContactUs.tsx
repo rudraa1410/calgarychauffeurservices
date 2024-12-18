@@ -1,27 +1,27 @@
-'use client'
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
-import { zodResolver } from "@hookform/resolvers/zod"
-import Image from "next/image"
-import { useForm } from "react-hook-form"
-import * as z from "zod"
+} from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Image from "next/image";
+import { useForm } from "react-hook-form";
+import * as z from "zod";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -34,7 +34,7 @@ const formSchema = z.object({
   date: z.string(),
   time: z.string(),
   message: z.string(),
-})
+});
 
 export default function CarBookingSection() {
   const form = useForm<z.infer<typeof formSchema>>({
@@ -43,10 +43,10 @@ export default function CarBookingSection() {
       carType: "normal",
       passengers: "1",
     },
-  })
+  });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
+    console.log(values);
     // Handle form submission here
   }
 
@@ -55,7 +55,9 @@ export default function CarBookingSection() {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col gap-4">
           <div>
-            <h3 className="text-lg font-medium text-muted-foreground">Booking From</h3>
+            <h3 className="text-lg font-medium text-muted-foreground">
+              Booking From
+            </h3>
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
               Book Your SUV & Sedan Online
             </h2>
@@ -74,7 +76,10 @@ export default function CarBookingSection() {
             <Card className="bg-slate-950">
               <CardContent className="p-6">
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+                  <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-4"
+                  >
                     <div className="grid gap-4 md:grid-cols-2">
                       <FormField
                         control={form.control}
@@ -82,7 +87,11 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Name" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Name"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -94,7 +103,12 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Email" type="email" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Email"
+                                type="email"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -106,7 +120,10 @@ export default function CarBookingSection() {
                       name="carType"
                       render={({ field }) => (
                         <FormItem>
-                          <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <Select
+                            onValueChange={field.onChange}
+                            defaultValue={field.value}
+                          >
                             <FormControl>
                               <SelectTrigger className="bg-white">
                                 <SelectValue placeholder="Select Car Type" />
@@ -130,7 +147,12 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Phone" type="tel" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Phone"
+                                type="tel"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -142,7 +164,12 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="# Passengers" type="number" {...field} className="bg-white" />
+                              <Input
+                                placeholder="# Passengers"
+                                type="number"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -156,7 +183,11 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Pick-up Point" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Pick-up Point"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -168,7 +199,11 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Drop-off Point" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Drop-off Point"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -182,7 +217,12 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Select Date" type="date" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Select Date"
+                                type="date"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -194,7 +234,12 @@ export default function CarBookingSection() {
                         render={({ field }) => (
                           <FormItem>
                             <FormControl>
-                              <Input placeholder="Select Time" type="time" {...field} className="bg-white" />
+                              <Input
+                                placeholder="Select Time"
+                                type="time"
+                                {...field}
+                                className="bg-white"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -207,13 +252,20 @@ export default function CarBookingSection() {
                       render={({ field }) => (
                         <FormItem>
                           <FormControl>
-                            <Textarea placeholder="Message" {...field} className="bg-white" />
+                            <Textarea
+                              placeholder="Message"
+                              {...field}
+                              className="bg-white"
+                            />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
-                    <Button type="submit" className="w-full bg-[#D4AF37] hover:bg-[#B4941F] text-white">
+                    <Button
+                      type="submit"
+                      className="w-full bg-[#D4AF37] hover:bg-[#B4941F] text-white"
+                    >
                       Send
                     </Button>
                   </form>
@@ -224,6 +276,5 @@ export default function CarBookingSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
